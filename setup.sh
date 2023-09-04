@@ -15,8 +15,6 @@ fi
 # Get the home directory of the user
 homedir=$(getent passwd "$username" | cut -d: -f6)
 
-sudo nala update
-
 command_exists () {
     command -v $1 >/dev/null 2>&1;
 }
@@ -126,4 +124,4 @@ else
     echo -e "${RED}Something went wrong!${RC}"
 fi
 
-source "$homedir/.bashrc"
+#source "$homedir/.bashrc"
