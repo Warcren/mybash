@@ -5,6 +5,11 @@ RED='\e[31m'
 YELLOW='\e[33m'
 GREEN='\e[32m'
 
+sudo apt-get update
+sudo apt-get install curl
+sudo apt-get install sudo
+
+
 command_exists () {
     command -v $1 >/dev/null 2>&1;
 }
