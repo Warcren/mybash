@@ -15,10 +15,7 @@ fi
 # Get the home directory of the user
 homedir=$(getent passwd "$username" | cut -d: -f6)
 
-sudo nala update
-sudo nala install curl
-sudo nala install sudo
-
+sudo nala -y update
 
 command_exists () {
     command -v $1 >/dev/null 2>&1;
