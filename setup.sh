@@ -15,7 +15,7 @@ fi
 # Get the home directory of the user
 homedir=$(getent passwd "$username" | cut -d: -f6)
 
-sudo nala -y update
+sudo nala update
 
 command_exists () {
     command -v $1 >/dev/null 2>&1;
