@@ -12,6 +12,8 @@ else
   username="$(whoami)"
 fi
 
+sudo nala update
+
 # Get the home directory of the user
 homedir=$(getent passwd "$username" | cut -d: -f6)
 
@@ -28,7 +30,7 @@ checkEnv() {
     fi
 
     ## Check Package Handeler
-    PACKAGEMANAGER='nala yum dnf pacman'
+    PACKAGEMANAGER='apt yum dnf pacman'
     for pgm in ${PACKAGEMANAGER}; do
         if command_exists ${pgm}; then
             PACKAGER=${pgm}
@@ -124,4 +126,4 @@ else
     echo -e "${RED}Something went wrong!${RC}"
 fi
 
-#source "$homedir/.bashrc"
+source "$homedir/.bashrc"
