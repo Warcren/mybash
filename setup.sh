@@ -5,9 +5,19 @@ RED='\e[31m'
 YELLOW='\e[33m'
 GREEN='\e[32m'
 
-sudo apt-get update
-sudo apt-get install curl
-sudo apt-get install sudo
+# Get the username of the user who invoked sudo
+if [ "$SUDO_USER" ]; then
+  username="$SUDO_USER"
+else
+  username="$(whoami)"
+fi
+
+# Get the home directory of the user
+homedir=$(getent passwd "$username" | cut -d: -f6)
+
+sudo nala update
+sudo nala install curl
+sudo nala install sudo
 
 
 command_exists () {
@@ -23,7 +33,7 @@ checkEnv() {
     fi
 
     ## Check Package Handeler
-    PACKAGEMANAGER='apt yum dnf pacman'
+    PACKAGEMANAGER='nala yum dnf pacman'
     for pgm in ${PACKAGEMANAGER}; do
         if command_exists ${pgm}; then
             PACKAGER=${pgm}
@@ -119,4 +129,4 @@ else
     echo -e "${RED}Something went wrong!${RC}"
 fi
 
-source ~/.bashrc
+source "$homedir/.bashrc"
