@@ -118,3 +118,5 @@ if linkConfig; then
 else
     echo -e "${RED}Something went wrong!${RC}"
 fi
+
+source ~/.bashrc
