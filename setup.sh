@@ -5,18 +5,6 @@ RED='\e[31m'
 YELLOW='\e[33m'
 GREEN='\e[32m'
 
-# Get the username of the user who invoked sudo
-if [ "$SUDO_USER" ]; then
-  username="$SUDO_USER"
-else
-  username="$(whoami)"
-fi
-
-sudo nala update
-
-# Get the home directory of the user
-homedir=$(getent passwd "$username" | cut -d: -f6)
-
 command_exists () {
     command -v $1 >/dev/null 2>&1;
 }
